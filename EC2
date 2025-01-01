@@ -1,0 +1,30 @@
+Documentation: How to Create an EC2 Instance
+
+Step 1: Log in to AWS Management Console
+Open the AWS Management Console.
+Navigate to the EC2 Dashboard by searching for "EC2" in the search bar.
+
+Step 2: Launch an EC2 Instance
+On the EC2 Dashboard, click on Launch Instance.
+Enter the following details:
+Name and Tags: Give your instance a meaningful name (e.g., MyWebServer).
+AMI (Amazon Machine Image): Select the appropriate AMI (e.g., Amazon Linux 2).
+Instance Type: Choose an instance type (e.g., t2.micro for free tier).
+Key Pair: Create or select a key pair to securely connect to the instance.
+Network Settings: Configure the VPC, subnet, and security group:
+Allow SSH (port 22) and HTTP (port 80) access.
+Storage: Configure the storage (e.g., 8 GiB of General Purpose SSD for free tier).
+Click Launch Instance to start the EC2 instance.
+
+
+Step 3: Verify the EC2 Instance
+Go back to the Instances section in the EC2 Dashboard.
+Verify that your instance is running and note its Public IP Address for connection.
+
+
+Step 4: Connect to the Instance
+Use the public IP address to connect via SSH:
+
+ssh -i "your-key.pem" ec2-user@<public-ip-address>
+
+Replace your-key.pem with your key file and <public-ip-address> with the instance’s public IP.
