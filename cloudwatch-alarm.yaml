@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create a CloudWatch Alarm for monitoring CPU Utilization.
+
+Resources:
+  CPUAlarm:
+    Type: "AWS::CloudWatch::Alarm"
+    Properties:
+      AlarmName: "HighCPUUtilizationAlarm"
+      AlarmDescription: "Alarm for monitoring high CPU utilization."
+      Namespace: "AWS/EC2"
+      MetricName: "CPUUtilization"
+      Dimensions:
+        - Name: "InstanceId"
+          Value: "i-xxxxxxxxxxxxxx" # Replace with your EC2 Instance ID
+      Statistic: "Average"
+      Period: 300 # 5 minutes
+      EvaluationPeriods: 1
+      Threshold: 80 # CPU utilization threshold
+      ComparisonOperator: "GreaterThanThreshold"
+      AlarmActions:
+        - !Ref AlarmSNS # Replace with your SNS Topic ARN or include a SNS topic in this template
+      OKActions:
+        - !Ref AlarmSNS # Optional: Action when the alarm goes back to OK state
+      TreatMissingData: "missing" # Optional: Defines how to treat missing data
+      
+  AlarmSNS:
+    Type: "AWS::SNS::Topic"
+    Properties:
+      TopicName: "AlarmNotificationTopic"
+      Subscription:
+        - Endpoint: "youremail@example.com" # Replace with your email address
+          Protocol: "email"
+
+Outputs:
+  AlarmName:
+    Value: !Ref CPUAlarm
+    Description: Name of the created CloudWatch alarm.
+  AlarmSNS:
+    Value: !Ref AlarmSNS
+    Description: ARN of the created SNS Topic.
