@@ -5,11 +5,10 @@ Step 1: Accessing the CloudWatch Console
 Log in to the AWS Management Console.
 Navigate to CloudWatch.
 On the AWS Management Console homepage, search for "CloudWatch" in the search bar and click on it.
-[Insert Screenshot: CloudWatch Console Landing Page]
+
 
 Step 2: Define a New Alarm
 In the CloudWatch dashboard, go to the Alarms section in the left menu and click Create alarm.
-[Insert Screenshot: Alarms Section with "Create Alarm" Button]
 
 Step 3: Select a Metric
 Click Select metric to choose the metric you want to monitor.
@@ -17,7 +16,7 @@ Use the search bar to find the metric by:
 Namespace (e.g., AWS/EC2, AWS/S3, etc.).
 Metric name (e.g., CPUUtilization, DiskWriteOps).
 Once the metric is located, select it and click Select metric.
-[Insert Screenshot: Metric Search and Selection Screen]
+
 
 Step 4: Configure the Metric Conditions
 Define the conditions for your alarm:
@@ -25,19 +24,16 @@ Threshold Type: Static or Anomaly detection.
 Threshold Value: Set a value that triggers the alarm (e.g., CPUUtilization > 80%).
 Period: Specify the time interval to evaluate the metric (e.g., 5 minutes).
 Click Next.
-[Insert Screenshot: Metric Conditions Configuration Screen]
 
 Step 5: Add Notification Actions
 Configure actions to be taken when the alarm state changes:
 Notification: Add an Amazon SNS topic to send email or SMS notifications. If you don’t have an SNS topic, click Create new topic.
 Choose the states that trigger notifications (e.g., Alarm, OK).
-[Insert Screenshot: Notification Action Configuration Screen]
 
 Step 6: Add Alarm Name and Description
 Enter a unique alarm name.
 Add an optional description for clarity (e.g., "Alarm for high CPU utilization on production EC2 instances").
 Click Next.
-[Insert Screenshot: Alarm Naming and Description Screen]
 
 Step 7: Review and Create
 Review all your alarm settings:
@@ -45,21 +41,18 @@ Metric.
 Conditions.
 Notifications.
 Click Create alarm to finalize the setup.
-[Insert Screenshot: Final Review Screen Before Creating Alarm]
 
 Step 8: Testing the Alarm
 Trigger the alarm condition manually by adjusting the workload or testing metrics.
 Verify:
 The alarm transitions to ALARM state.
 Notifications are sent to the configured SNS topic.
-[Insert Screenshot: Alarm Dashboard Showing Triggered Alarm]
 
 Step 9: Advanced Configurations (Optional)
 Composite Alarms: Combine multiple alarms into a single evaluation.
 Navigate to Alarms > Create alarm > Create composite alarm.
 Define rules using existing alarms.
 Anomaly Detection: Enable anomaly detection to trigger alarms based on statistical patterns.
-[Insert Screenshot: Composite Alarm Configuration]
 
 Conclusion
 By following this guide, you can set up advanced CloudWatch alarms tailored to your monitoring needs. CloudWatch alarms ensure proactive monitoring and timely responses to system issues, enhancing the reliability of your AWS infrastructure.
